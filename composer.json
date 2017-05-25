@@ -1,0 +1,34 @@
+{
+    "name": "aqlx86/sms-otp",
+    "description": "SMS OTP for Laravel using iSMS gateway.",
+    "keywords": ["sms", "isms", "laravel", "otp"],
+    "homepage": "https://github.com/aqlx86/EnvChecker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arnel Labarda",
+            "email": "aqlx86@gmail.com",
+            "homepage": "http://arnel.labarda.ph/",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "aqlx86/isms-php": "^1.1",
+        "nesbot/carbon": "~1.20"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SMSOTP\\": "src/SMSOTP/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "bin-dir": "bin"
+    }
+}
