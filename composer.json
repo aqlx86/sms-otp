@@ -1,8 +1,8 @@
 {
     "name": "aqlx86/sms-otp",
-    "description": "SMS OTP for Laravel using iSMS gateway.",
+    "description": "SMS OTP for Laravel 5 using iSMS gateway.",
     "keywords": ["sms", "isms", "laravel", "otp"],
-    "homepage": "https://github.com/aqlx86/EnvChecker",
+    "homepage": "https://github.com/aqlx86/sms-otp",
     "license": "MIT",
     "authors": [
         {
