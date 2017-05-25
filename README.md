@@ -44,6 +44,21 @@ return [
 Usage
 -----
 
+```
+use SMSOTP\OTPCode;
+use SMSOTP\OTPRepository;
+use SMSOTP\OTPSender;
+use SMSOTP\OTPVerifier;
+use SMSOTP\ISMS;
+
+$sender = new OTPSender(
+    new OTPCode,
+    new ISMS,
+    new OTPRepository
+);
+$sender->send('639954683875', 'holy shit your otp code is :code');
+
+```
 
 Test
 ----
