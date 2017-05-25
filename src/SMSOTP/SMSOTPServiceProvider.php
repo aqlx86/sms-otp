@@ -14,8 +14,8 @@ class SMSOTPServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/smsotp.php' => config_path('smsotp.php'),
-            __DIR__.'/migrations' => database_path('migrations'),
+            __DIR__.'/Config/smsotp.php' => config_path('smsotp.php'),
+            __DIR__.'/Migrations' => database_path('migrations'),
         ]);
     }
 
