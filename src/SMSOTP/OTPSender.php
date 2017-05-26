@@ -10,7 +10,7 @@ class OTPSender
     protected $repository;
     protected $sms;
 
-    public function __construct(Contract\Generator $code, Contract\SMSGateway $sms, Contract\Repository $repository)
+    public function __construct(Contract\Generator $code, Contract\Repository $repository, Contract\SMSGateway $sms)
     {
         $this->code = $code;
         $this->repository = $repository;
