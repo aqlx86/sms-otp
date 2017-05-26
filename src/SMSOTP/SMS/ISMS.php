@@ -1,6 +1,6 @@
 <?php
 
-namespace SMSOTP;
+namespace SMSOTP\SMS;
 
 use SMSOTP\Contract\SMSGateway;
 
