@@ -1,56 +1,61 @@
-Introduction
-------------
+## Introduction
+SMS OTP for Laravel 5. By default this uses iSMS as SMS provider.
 
-SMS OTP for Laravel 5 using iSMS gateway.
-
-
-Installation
-------------
-
+## Installation
 Add sms-otp to your composer.json file:
 
-```composer.phar require "aqlx86/sms-otp"```
+```
+composer.phar require "aqlx86/sms-otp"
+```
 
-
-Add the service provider to your Laravel application config:
+Add the service provider to your Laravel application config/app.php:
 
 ```PHP
 SMSOTP\SMSOTPServiceProvider::class
 ```
 
-Configuration
--------------
-
+## Publish
 ```
 php artisan vendor:publish --provider="SMSOTP\SMSOTPServiceProvider"
 php artisan migrate
 ```
 
-Update `config/smsotp.php`
+## Usage
+
+
+To send OTP, remember to include `:code` this will be replaced with the actual code.
 ```
-return [
-    // isms username
-    'username' => env('ISMS_USERNAME'),
-
-    // isms password
-    'password' => env('ISMS_PASSWORD'),
-
-    // otp code expiration in seconds
-    'ttl' => 300
-];
-
+$sender = app()->make(OTPSender::class);
+$sender->send('6399512345678', 'holy shit your otp code is :code');
 ```
 
-Usage
------
-
-
-Test
-----
-
-PHPSpec
+To verify OTP code
 ```
-./bin/phpspec run
+$verifier = app()->make(OTPVerifier::class);
+$verifier->verify('6399512345678', 'A44E8');
 ```
 
 
+## Extending
+
+### Using other SMS provider
+
+Create your sms provider
+```
+class CustomSMSProvider implemnts SMSOTP\Contract\SMSGateway
+{
+    public function send($number, $message)
+    {
+        // your implemention
+    }
+}
+```
+
+Update configuration ```config/smsotp.php```
+
+```
+'sms' => CustomSMSProvider::class,
+```
+
+### Generating your own OTP code
+Do the same as creating your own SMS provider.
