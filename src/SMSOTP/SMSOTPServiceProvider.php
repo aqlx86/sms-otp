@@ -26,6 +26,8 @@ class SMSOTPServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app->bind('SMSOTP\Contract\SMSGateway', config('smsotp.sms'));
+        $this->app->bind('SMSOTP\Contract\Generator', config('smsotp.generator'));
+        $this->app->bind('SMSOTP\Contract\Repository', config('smsotp.repository'));
     }
 }
