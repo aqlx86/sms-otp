@@ -6,6 +6,8 @@ use Carbon\Carbon;
 
 class OTP
 {
+    const ACTION_DEFAULT = 'default';
+
     protected $number;
     protected $code;
     protected $is_verified;

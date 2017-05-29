@@ -11,6 +11,7 @@ class UserOTP extends Model
     protected $fillable = [
         'number',
         'code',
+        'action',
         'is_verified',
         'expired_at'
     ];

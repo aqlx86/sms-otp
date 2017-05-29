@@ -10,21 +10,23 @@ use Carbon\Carbon;
 
 class OTPRepository implements Repository
 {
-    public function save_otp($number, $code)
+    public function save_otp($number, $code, $action = OTP::ACTION_DEFAULT)
     {
         $expired_at = Carbon::now()->addSeconds(config('smsotp.ttl'));
 
-        UserOTP::create([
-            'number' => $number,
-            'code' => $code,
-            'expired_at' => $expired_at
-        ]);
+        $otp = UserOTP::updateOrCreate(
+            ['number' => $number, 'action' => $action],
+            ['code' => $code, 'expired_at' => $expired_at]
+        );
+
+        $otp->save();
     }
 
-    public function otp_details($number, $code)
+    public function otp_details($number, $code, $action = OTP::ACTION_DEFAULT)
     {
         $details = UserOTP::where('number', '=', $number)
             ->where('code', '=', $code)
+            ->where('action', '=', $action)
             ->orderBy('created_at', 'desc')
             ->first();
 
@@ -43,7 +45,7 @@ class OTPRepository implements Repository
 
     public function mark_otp_verified($code)
     {
-        UserOTP::where('code', '=', $code)
+        return (bool) UserOTP::where('code', '=', $code)
             ->update(['is_verified' => true]);
     }
 }
