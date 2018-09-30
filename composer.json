@@ -8,13 +8,13 @@
         {
             "name": "Arnel Labarda",
             "email": "aqlx86@gmail.com",
-            "homepage": "http://arnel.labarda.ph/",
+            "homepage": "https://aql.ph/",
             "role": "Maintainer"
         }
     ],
     "require": {
         "php": ">=5.5.9",
-        "aqlx86/isms-php": "^1.1",
+        "aqlx86/isms-php": "^1.2",
         "nesbot/carbon": "~1.20"
     },
     "require-dev": {
